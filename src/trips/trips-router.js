@@ -9,7 +9,7 @@ const jsonParser = express.json()
 const serializeTrip = trip => ({
     id: trip.id,
     name: xss(trip.name),
-    location: xss(trip.locaiton),
+    location: xss(trip.location),
     notes: xss(trip.notes),
     rating: trip.rating
 })
