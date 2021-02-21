@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
+const {CLIENT_ORIGIN} = require('./config')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const tripsRouter = require('./trips/trips-router')
@@ -15,18 +16,20 @@ const morganOption = (NODE_ENV === 'production')
 
 app.use(morgan(morganOption))
 app.use(helmet())
-app.use(cors())
+app.use(cors({
+    origin: CLIENT_ORIGIN
+}))
 
-app.use(function validateBearerToken(req, res, next) {
-    const apiToken = process.env.API_TOKEN
-    const authToken = req.get('Authorization')
+// app.use(function validateBearerToken(req, res, next) {
+//     const apiToken = process.env.API_TOKEN
+//     const authToken = req.get('Authorization')
 
-    if (!authToken || authToken.split(' ')[1] !== apiToken) {
-        logger.error(`Unauthorized request to path: ${req.path}`)
-        return res.status(401).json({ error: 'Unauthorized request' })
-    }
-    next()
-})
+//     if (!authToken || authToken.split(' ')[1] !== apiToken) {
+//         logger.error(`Unauthorized request to path: ${req.path}`)
+//         return res.status(401).json({ error: 'Unauthorized request' })
+//     }
+//     next()
+// })
 
 app.use('/api/trips', tripsRouter)
 
