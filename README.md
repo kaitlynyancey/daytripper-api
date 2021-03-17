@@ -5,9 +5,8 @@
 ### Get
 To display all trips in the trips database:
 
-`fetch('https://floating-lowlands-20964.herokuapp.com/api/trips', {
-
-      method: 'GET',
+`fetch('https://floating-lowlands-20964.herokuapp.com/api/trips', 
+     {method: 'GET',
       headers: {
         'content-type': 'application/json',
         'Authorization': 'Bearer REACT_APP_API_KEY'
