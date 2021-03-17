@@ -1,26 +1,67 @@
-# Express Boilerplate!
+# Day Tripper API
 
-This is a boilerplate project used for starting new projects!
+## Endpoints
 
-## Set up
+### Get
+To display all trips in the trips database:
+`fetch('https://floating-lowlands-20964.herokuapp.com/api/trips', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer REACT_APP_API_KEY'
+      }})`
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+### Get by Trip ID
+To display a specific trip from the trips database
+`fetch('https://floating-lowlands-20964.herokuapp.com/api/trips/${YourTripId}', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer REACT_APP_API_KEY'
+      }})`
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+### Post
+To save a new trip to the trips database:
+`fetch('https://floating-lowlands-20964.herokuapp.com/api/trips', {
+      method: 'POST',
+      body: JSON.stringify(newTrip),
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer REACT_APP_API_KEY'
+      }})`
 
-## Scripts
+Example of 'newTrip' object:
+`const newTrip = {
+            id: 1 (required),
+            name: 'New Trip' (required),
+            location: 'Anywhere, USA' (required),
+            notes: 'Test Notes' (optional),
+            rating: 3 (required),
+            }`
 
-Start the application `npm start`
+### Delete
+To delete an existing trip from the trips database:
+`fetch('https://floating-lowlands-20964.herokuapp.com/api/trips/${YourTripId}', {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer REACT_APP_API_KEY'
+        }})`
 
-Start nodemon for the application `npm run dev`
+### Patch
+`fetch('https://floating-lowlands-20964.herokuapp.com/api/trips/${YourTripId}', {
+      method: 'PATCH',
+      body: JSON.stringify(updatedTrip),
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer REACT_APP_API_KEY'
+      }})`
 
-Run the tests `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's main branch.
+Example of 'updatedTrip' object:
+`const updatedTrip = {
+            id: 1 (required),
+            name: 'Updated Trip' (required),
+            location: 'Anywhere, USA' (required),
+            notes: 'Updated Notes' (optional),
+            rating: 3 (required),
+            }`
