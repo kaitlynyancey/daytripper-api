@@ -4,6 +4,7 @@
 
 ### Get
 To display all trips in the trips database:
+
 `fetch('https://floating-lowlands-20964.herokuapp.com/api/trips', {
       method: 'GET',
       headers: {
@@ -12,7 +13,8 @@ To display all trips in the trips database:
       }})`
 
 ### Get by Trip ID
-To display a specific trip from the trips database
+To display a specific trip from the trips database:
+
 `fetch('https://floating-lowlands-20964.herokuapp.com/api/trips/${YourTripId}', {
       method: 'GET',
       headers: {
@@ -22,6 +24,7 @@ To display a specific trip from the trips database
 
 ### Post
 To save a new trip to the trips database:
+
 `fetch('https://floating-lowlands-20964.herokuapp.com/api/trips', {
       method: 'POST',
       body: JSON.stringify(newTrip),
@@ -31,6 +34,7 @@ To save a new trip to the trips database:
       }})`
 
 Example of 'newTrip' object:
+
 `const newTrip = {
             id: 1 (required),
             name: 'New Trip' (required),
@@ -41,6 +45,7 @@ Example of 'newTrip' object:
 
 ### Delete
 To delete an existing trip from the trips database:
+
 `fetch('https://floating-lowlands-20964.herokuapp.com/api/trips/${YourTripId}', {
         method: 'DELETE',
         headers: {
@@ -49,6 +54,8 @@ To delete an existing trip from the trips database:
         }})`
 
 ### Patch
+To update an exisiting trip in the trips database:
+
 `fetch('https://floating-lowlands-20964.herokuapp.com/api/trips/${YourTripId}', {
       method: 'PATCH',
       body: JSON.stringify(updatedTrip),
@@ -58,6 +65,7 @@ To delete an existing trip from the trips database:
       }})`
 
 Example of 'updatedTrip' object:
+
 `const updatedTrip = {
             id: 1 (required),
             name: 'Updated Trip' (required),
